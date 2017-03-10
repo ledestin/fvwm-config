@@ -1,0 +1,73 @@
+FuncFvwmDecorBackground
+
+Style "*" Button 1, Button 2, Button 4, Button 6
+Style "*" MwmButtons  # button relief follows the state
+
+AddButtonStyle 1 Vector  5 35x35@1 65x35@1 65x55@0 35x55@0 35x35@1
+AddButtonStyle 2 Vector 17 25x25@1 35x25@1 50x40@1 65x25@1 75x25@1 75x35@0 60x50@0 75x65@1 75x75@0 65x75@0 50x60@0 35x75@0 25x75@0 25x65@0 40x50@1 25x35@0 25x25@1
+AddButtonStyle 4 Vector 12 40x60@1 40x75@1 20x75@1 20x50@1 35x50@1 35x50@1 35x20@1 75x20@1 75x60@0 35x60@0 35x55@0 35x50@1
+AddButtonStyle 6 Vector 10 40x50@1 40x75@0 20x75@0 20x50@1 40x50@1 30x50@1 30x20@1 70x20@1 70x60@1 45x60@1
+# Nested Boxes
+ButtonStyle 1 - Clear MWMDecorMenu
+ButtonStyle 2 - Clear
+ButtonStyle 4 - Clear MWMDecorMax
+ButtonStyle 6 - Clear MWMDecorMin
+
+TitleStyle Height MinHeight 20
+
+#     button	context	modifie	function
+Mouse 1 	1	A	Menu MenuFvwmWindowOps2
+MouseXX 2 3	1	A       Menu MenuFvwmWindowMove
+MouseXX 3 2	1	A	Menu MenuFvwmWindowGroupOps
+Mouse 1 	2	A	FuncFvwmDeleteOrDestroy
+Mouse 1 	4	A	FuncFvwmMaximize
+Mouse 2 	4	A	FuncFvwmMaximizeVertically
+Mouse 3 	4	A	FuncFvwmMaximizeHorizontally
+Mouse 1 	4	S	Maximize grow grow
+Mouse 2 	4	S	Maximize    0 grow
+Mouse 3 	4	S	Maximize grow    0
+Mouse 1 	6	A	FuncFvwmIconify
+Mouse 2 	6	A	FuncFvwmIconifySameResource on
+Mouse 3 	6	A	FuncFvwmIconifySameResource toggle
+Mouse 0 	1	CM	FuncFvwmShowButtonInfo "Mouse 1 - popup Window Ops menu^nMouse 2/3 - popup Move menu^nMouse 3/2 - popup Resource Group menu"
+Mouse 0 	2	CM	FuncFvwmShowButtonInfo "Mouse 1 - Delete on click^nDestroy on double click"
+Mouse 0 	4	CM	FuncFvwmShowButtonInfo "Mouse 1 - Maximize:^n^tfully on click^n^tmenu on double click^nMouse 2 - Maximize vertically^nMouse 3 - Maximize horizontally^nAll with Shift - Maximize grow"
+Mouse 0 	6	CM	FuncFvwmShowButtonInfo "Mouse 1 - Iconify^nMouse 2 - Iconify on resource group^nMouse 3 - Iconify toggle resource group"
+
+DestroyFunc FuncFvwmUnReloadDecor
+AddToFunc   FuncFvwmUnReloadDecor
+
+DestroyFunc FuncFvwmReloadDecor
+AddToFunc   FuncFvwmReloadDecor
++ I FuncFvwmDecorBackground
++ I AddButtonStyle 1 Vector  5 35x35@1 65x35@1 65x55@0 35x55@0 35x35@1
++ I AddButtonStyle 2 Vector 17 25x25@1 35x25@1 50x40@1 65x25@1 75x25@1 75x35@0 60x50@0 75x65@1 75x75@0 65x75@0 50x60@0 35x75@0 25x75@0 25x65@0 40x50@1 25x35@0 25x25@1
++ I AddButtonStyle 4 Vector 12 40x60@1 40x75@1 20x75@1 20x50@1 35x50@1 35x50@1 35x20@1 75x20@1 75x60@0 35x60@0 35x55@0 35x50@1
++ I AddButtonStyle 6 Vector 10 40x50@1 40x75@0 20x75@0 20x50@1 40x50@1 30x50@1 30x20@1 70x20@1 70x60@1 45x60@1
+
+DestroyFunc FuncFvwmOverRideWindowLook
+AddToFunc   FuncFvwmOverRideWindowLook
+
+DestroyFunc FuncFvwmStartWindowButtons
+AddToFunc   FuncFvwmStartWindowButtons
+
+DestroyFunc FuncFvwmStopWindowButtons
+AddToFunc   FuncFvwmStopWindowButtons
++ I FuncFvwmRemoveAllButtons
++ I Mouse 1 	1	A	-
++ I Mouse 2	1	A	-
++ I Mouse 3	1	A       -
++ I Mouse 1 	2	A	-
++ I Mouse 1 	4	A	-
++ I Mouse 2 	4	A	-
++ I Mouse 3 	4	A	-
++ I Mouse 1 	4	S	-
++ I Mouse 2 	4	S	-
++ I Mouse 3 	4	S	-
++ I Mouse 1 	6	A	-
++ I Mouse 2 	6	A	-
++ I Mouse 3 	6	A	-
++ I Mouse 0 	1	CM	-
++ I Mouse 0 	2	CM	-
++ I Mouse 0 	4	CM	-
++ I Mouse 0 	6	CM	-

@@ -1,0 +1,20 @@
+FuncFvwmSetFont-WindowTitle * -*-helvetica-medium-r-*-*-14-*
+FuncFvwmSetFont-IconTitle   * -*-helvetica-medium-r-*-*-12-*
+
+Style "*"	BorderWidth 5, HandleWidth 5
+Style "*"	FvwmBorder, FirmBorder
+
+BorderStyle	Simple -- HiddenHandles
+
+TitleStyle	RightJustified
+TitleStyle	-- Flat
+
+ButtonStyle	All -- Flat
+
+AddToFunc   FuncFvwmReloadDecor
++ I FuncFvwmSetFont-WindowTitle * -*-helvetica-medium-r-*-*-14-*
++ I FuncFvwmSetFont-IconTitle   * -*-helvetica-medium-r-*-*-12-*
++ I BorderStyle	Simple -- HiddenHandles
++ I TitleStyle	-- Flat
++ I ButtonStyle	All -- Flat
++ I FuncFvwmOverRideWindowLook
